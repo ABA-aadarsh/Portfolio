@@ -3,6 +3,12 @@ title: "easyCSIT"
 description: "A growing learning platform for B.Sc. CSIT students with structured notes, videos, AI-generated Q&As, and past exam collections."
 date: "Jun 1 2025"
 demoURL: "https://www.easycsit.com"
+stack: 
+   - "Nextjs"
+   - "MongoDB"
+highlights:
+   - 16K+ views/month
+   - 100+ users/day
 ---
 
 ![Hero Image](/assets/projects/easycsit/easycsit-hero.png)

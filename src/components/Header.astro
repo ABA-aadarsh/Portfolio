@@ -2,17 +2,28 @@
 import Container from "@components/Container.astro";
 import Link from "@components/Link.astro";
 import { SITE } from "@consts";
+import logoDark from "/favicon-dark.ico"
+import logoLight from "/favicon-light.ico"
+
 ---
 
 <header>
   <Container>
     <div class="flex flex-wrap gap-y-2 justify-between">
-      <Link href="/" underline={false}>
+      <Link href="/" underline={false} class="flex items-center gap-2">
+        <img
+          src={logoLight}
+          class="w-8 aspect-square object-contain hidden dark:block"
+        />
+        <img
+          src={logoDark}
+          class="w-8 aspect-square object-contain dark:hidden"
+        />
         <div class="font-semibold">
           {SITE.NAME}
         </div>
       </Link>
-      <nav class="flex gap-1">
+      <nav class="flex gap-3 text-sm">
         <Link href="/logs">
           logs
         </Link>

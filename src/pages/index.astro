@@ -8,18 +8,22 @@ import { dateRange } from "@lib/utils";
 import { SITE, HOME, SOCIALS } from "@consts";
 
 const blog = (await getCollection("logs"))
-  .filter(post => !post.data.draft)
+  .filter((post) => !post.data.draft)
   .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf())
-  .slice(0,SITE.NUM_POSTS_ON_HOMEPAGE);
+  .slice(0, SITE.NUM_POSTS_ON_HOMEPAGE);
 
 const projects = (await getCollection("projects"))
-  .filter(project => !project.data.draft)
+  .filter((project) => !project.data.draft)
   .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf())
-  .slice(0,SITE.NUM_PROJECTS_ON_HOMEPAGE);
+  .slice(0, SITE.NUM_PROJECTS_ON_HOMEPAGE);
 
 const allwork = (await getCollection("work"))
-  .sort((a, b) => new Date(b.data.dateStart).valueOf() - new Date(a.data.dateStart).valueOf())
-  .slice(0,SITE.NUM_WORKS_ON_HOMEPAGE);
+  .sort(
+    (a, b) =>
+      new Date(b.data.dateStart).valueOf() -
+      new Date(a.data.dateStart).valueOf()
+  )
+  .slice(0, SITE.NUM_WORKS_ON_HOMEPAGE);
 
 const work = await Promise.all(
   allwork.map(async (item) => {
@@ -27,47 +31,79 @@ const work = await Promise.all(
     return { ...item, Content };
   })
 );
-
 ---
 
 <PageLayout title={HOME.TITLE} description={HOME.DESCRIPTION}>
   <Container>
-    <h4 class="font-semibold text-black dark:text-white">
-      Hi, I'm Aadarsh <span class="text-xl">👋🏻</span> 
-    </h4>
-    <div class="space-y-16">
-      <section>
-        <article class="space-y-4">
-          <p class="">
-            I am a software developer and computer science student. I try to explore different tech areas, though currently I am more confident in web development. I write about my projects, development process and tech exploration in my logs.
+    <div class="card-prominent mb-16">
+      <div class="max-w-2xl">
+        <h1
+          class="text-xl md:text-2xl font-bold text-black dark:text-white mb-6 leading-tight"
+        >
+          Hi, I'm Aadarsh <span class="text-2xl md:text-3xl">👋🏻</span>
+        </h1>
+        <div class="mb-8 text-lg">
+          <p class="mb-4">
+            I'm a software developer passionate about building performant,
+            genuinely cool things. Currently pursuing a BSc in Computer Science
+            and Information Technology, I'm exploring diverse areas of
+            technology and sharpening my skills. I like to be competent about the things I do, the tech I use.
           </p>
-        </article>
-        <ul class="flex flex-wrap gap-2">
-          {SOCIALS.map(SOCIAL => (
-            <li class="flex gap-x-2 text-nowrap">
-              <Link href={SOCIAL.HREF} external aria-label={`${SITE.NAME} on ${SOCIAL.NAME}`}>
-                {SOCIAL.NAME}
-              </Link>
-              {"/"}
+          <ul class="space-y-2 text-stone-700 dark:text-stone-400">
+            <li class="flex items-start">
+              <span class="mr-2">🛠️</span> I spend much of my time building projects—some
+              practical, others just for fun.
             </li>
-          ))}
-          <li class="line-clamp-1">
-            <Link href={`mailto:${SITE.EMAIL}`} aria-label={`Email ${SITE.NAME}`}>
-              {SITE.EMAIL}
-            </Link>
-          </li>
-        </ul>
-      </section>
+            <li class="flex items-center">
+              <span class="mr-2">⚡</span> I create solutions that either solve real
+              problems or are delightfully absurd.
+            </li>
+            <li class="flex items-center">
+              <span class="mr-2">🚫</span> I don't like to (won't) make fancy animating
+              websites.
+            </li>
+            <li class="flex items-center">
+              <span class="mr-2">🐱</span> I try to pet every cat I meet.
+            </li>
+            <li class="flex items-center">
+              <span class="mr-2">🍦</span> I eat way too much Icecream.
+            </li>
+          </ul>
+        </div>
 
-      <section class=" space-y-6">
-        <div class="flex flex-wrap gap-y-2 items-center justify-between">
-          <h5 class="font-semibold text-black dark:text-white">
-            Latest posts
-          </h5>
-          <Link href="/blog">
-            See all posts
+        <!-- Social Links -->
+        <div class="flex flex-wrap gap-3">
+          {SOCIALS.map(social => (
+            <Link
+              href={social.HREF}
+              external
+              aria-label={`${SITE.NAME} on ${social.NAME}`}
+              class="link-subtle text-sm px-3 py-1 rounded-full border border-stone-200 dark:border-stone-700 hover:border-stone-300 dark:hover:border-stone-600"
+            >
+              {social.NAME}
+            </Link>
+          ))}
+          <Link
+            href={`mailto:${SITE.EMAIL}`}
+            aria-label={`Email ${SITE.NAME}`}
+            class="link-subtle text-sm px-3 py-1 rounded-full border border-stone-200 dark:border-stone-700 hover:border-stone-300 dark:hover:border-stone-600"
+          >
+            Email
           </Link>
         </div>
+      </div>
+    </div>
+
+    <div class="space-y-16">
+      <!-- Latest Posts Section -->
+      <section>
+        <div class="flex items-center justify-between mb-8">
+          <h2 class="text-2xl font-semibold text-black dark:text-white">
+            Latest Posts
+          </h2>
+          <Link href="/blog" class="link-primary text-sm">See all posts →</Link>
+        </div>
+
         <ul class="flex flex-col gap-4">
           {blog.map(post => (
             <li>
@@ -77,44 +113,17 @@ const work = await Promise.all(
         </ul>
       </section>
 
-      <!-- <section class=" space-y-6">
-        <div class="flex flex-wrap gap-y-2 items-center justify-between">
-          <h5 class="font-semibold text-black dark:text-white">
-            Work Experience
-          </h5>
-          <Link href="/work">
-            See all work
-          </Link>
-        </div>
-        <ul class="flex flex-col space-y-4">
-          {work.map(entry => (
-            <li>
-              <div class="text-sm opacity-75">
-                {dateRange(entry.data.dateStart, entry.data.dateEnd)}
-              </div>
-              <div class="font-semibold text-black dark:text-white">
-                {entry.data.company}
-              </div>
-              <div class="text-sm opacity-75">
-                {entry.data.role}
-              </div>
-              <article>
-                <entry.Content />
-              </article>
-            </li>
-          ))}
-        </ul>
-      </section> -->
+      <div class="section-divider"></div>
 
-      <section class=" space-y-6">
-        <div class="flex flex-wrap gap-y-2 items-center justify-between">
-          <h5 class="font-semibold text-black dark:text-white">
-            Recent projects
-          </h5>
-          <Link href="/projects">
-            See all projects
-          </Link>
+      <!-- Recent Projects Section -->
+      <section>
+        <div class="flex items-center justify-between mb-8">
+          <h2 class="text-2xl font-semibold text-black dark:text-white">
+            Recent Projects
+          </h2>
+          <Link href="/projects" class="link-primary text-sm">See all projects →</Link>
         </div>
+
         <ul class="flex flex-col gap-4">
           {projects.map(project => (
             <li>
@@ -124,31 +133,40 @@ const work = await Promise.all(
         </ul>
       </section>
 
-      <section class=" space-y-4">
-        <h5 class="font-semibold text-black dark:text-white">
-          Let's Connect
-        </h5>
-        <article>
-          <p>
-            If you want to get in touch with me about something or just to say hi,
-            reach out on social media or send me an email.
+      <div class="section-divider"></div>
+
+      <!-- Let's Connect Section -->
+      <section>
+        <div class="card text-center">
+          <h2 class="text-2xl font-semibold text-black dark:text-white mb-4">
+            Let's Connect
+          </h2>
+          <p
+            class="text-stone-600 dark:text-stone-400 mb-6 max-w-lg mx-auto leading-relaxed"
+          >
+            If you want to collaborate with me in cool projects, reach out on social media or send me an email.
           </p>
-        </article>
-        <ul class="flex flex-wrap gap-2">
-          {SOCIALS.map(SOCIAL => (
-            <li class="flex gap-x-2 text-nowrap">
-              <Link href={SOCIAL.HREF} external aria-label={`${SITE.NAME} on ${SOCIAL.NAME}`}>
-                {SOCIAL.NAME}
+
+          <div class="flex flex-wrap justify-center gap-3">
+            {SOCIALS.map(social => (
+              <Link
+                href={social.HREF}
+                external
+                aria-label={`${SITE.NAME} on ${social.NAME}`}
+                class="link-primary text-sm px-4 py-2 rounded-full border border-stone-300 dark:border-stone-600 hover:border-stone-400 dark:hover:border-stone-500 hover:bg-stone-50 dark:hover:bg-stone-800/50"
+              >
+                {social.NAME}
               </Link>
-              {"/"}
-            </li>
-          ))}
-          <li class="line-clamp-1">
-            <Link href={`mailto:${SITE.EMAIL}`} aria-label={`Email ${SITE.NAME}`}>
-              {SITE.EMAIL}
+            ))}
+            <Link
+              href={`mailto:${SITE.EMAIL}`}
+              aria-label={`Email ${SITE.NAME}`}
+              class="link-primary text-sm px-4 py-2 rounded-full bg-black dark:bg-white text-white dark:text-black hover:bg-stone-800 dark:hover:bg-stone-200"
+            >
+              Send Email
             </Link>
-          </li>
-        </ul>
+          </div>
+        </div>
       </section>
     </div>
   </Container>
