@@ -1,0 +1,38 @@
+---
+// CatCanvas.astro
+---
+<canvas 
+  id="cat-canvas"
+  class="h-[180px] max-md:w-[95vw] max-w-[560px] max-md:h-[calc(95vw*180/560)] max-h-[180px] md:fixed md:bottom-0 md:left-0 cursor-pointer"
+  style="image-rendering: pixelated;"
+></canvas>
+
+<style>
+  #cat-canvas {
+    pointer-events: auto;
+    z-index: 1000;
+  }
+</style>
+
+<script>
+  // Import the TypeScript class
+  import { InteractiveCat } from '../scripts/catcanvas';
+ 
+  // Initialize when page loads
+  let catInstance: InteractiveCat | null = null;
+ 
+  window.addEventListener('load', (): void => {
+    try {
+      catInstance = new InteractiveCat();
+    } catch (error) {
+      console.error('Failed to initialize cat:', error);
+    }
+  });
+  
+  // Cleanup on page unload
+  window.addEventListener('beforeunload', (): void => {
+    if (catInstance) {
+      catInstance.destroy();
+    }
+  });
+</script>
