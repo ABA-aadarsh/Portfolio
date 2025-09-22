@@ -25,7 +25,7 @@ Designed to run directly in the terminal (including support for VS Code terminal
 Developer: [Aadarsh](https://github.com/ABA-aadarsh)
 
 <video controls>
-  <source src="/assets/projects/typonode/demo-video.mp4" type="video/mp4" />
+  <source src="https://misc-assets.easycsit.com/typonode-demo-video.mp4" type="video/mp4" />
 </video>
 <p class="text-center">Demo Video</p>
 

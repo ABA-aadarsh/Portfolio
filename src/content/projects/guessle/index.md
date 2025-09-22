@@ -54,7 +54,7 @@ Developer: [Aadarsh](https://github.com/ABA-aadarsh)
 ### Demo Video
 
 <video controls>
-  <source src="/assets/projects/guessle/demo-video.mp4" type="video/mp4" />
+  <source src="https://misc-assets.easycsit.com/guessle-demo-video.mp4" type="video/mp4" />
 </video>
 <p class="text-center">Demo Video</p>
 
