@@ -3,6 +3,8 @@ title: "Chemical Equation Balancer - In your terminal"
 description: "Write chemical equations in the standard format and get balanced form within your terminal"
 date: "Sept 13 2024"
 repoURL: "https://github.com/ABA-aadarsh/cpp-chemical-equation-balancer"
+stack: 
+   - "C"
 ---
 ![Screenshot 2024-09-17 055339](https://github.com/user-attachments/assets/c1b317c4-8500-40e2-95c3-a5d43b102831)
 

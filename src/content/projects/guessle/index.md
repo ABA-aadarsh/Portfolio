@@ -3,6 +3,8 @@ title: "Guessle"
 description: "A programmatic Wordle guesser built with Bun + TypeScript."
 date: "Sep 21 2025"
 repoURL: "https://github.com/ABA-aadarsh/Guessle-Wordle-Guesser"
+stack: 
+   - "Bun"
 ---
 
 ```txt

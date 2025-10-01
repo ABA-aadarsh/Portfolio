@@ -91,7 +91,7 @@ This portion required in-depth understanding of JavaScript Proxies and type defi
 Building Typonode was a slow, iterative process filled with both fun and frustration. I initially underestimated the time and complexity, but the end result turned out to be something I’m proud of.
 
 <video controls client:visible>
-  <source src="/assets/projects/typonode/demo-video.mp4" type="video/mp4" />
+  <source src="https://misc-assets.easycsit.com/typonode-demo-video.mp4" type="video/mp4" />
 </video>
 
 If you're interested:

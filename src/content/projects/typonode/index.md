@@ -3,6 +3,8 @@ title: "Typonode"
 description: "Terminal-based typing speed program made in Node/TS."
 date: "Nov 25 2024"
 repoURL: "https://github.com/ABA-aadarsh/typonode"
+stack: 
+   - "Node.js"
 ---
 
 **Typonode** is a terminal-based typing speed application built in TypeScript and Node.js, with **no external dependencies**.
