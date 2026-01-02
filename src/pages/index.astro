@@ -15,6 +15,9 @@ const blog = (await getCollection("logs"))
 const projects = (await getCollection("projects"))
   .filter((project) => !project.data.draft)
   .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf())
+  .sort(
+    (a, b) => (a.data.featuredNumber || 1000) - (b.data.featuredNumber || 1000)
+  )
   .slice(0, SITE.NUM_PROJECTS_ON_HOMEPAGE);
 
 const allwork = (await getCollection("work"))
@@ -43,46 +46,30 @@ const work = await Promise.all(
           Hi, I'm Aadarsh <span class="text-2xl md:text-3xl">👋🏻</span>
         </h1>
         <div class="mb-8 text-lg">
-          <p class="mb-4">
-            I'm a software developer passionate about building performant,
-            genuinely cool things. Currently pursuing a BSc in Computer Science
-            and Information Technology, I'm exploring diverse areas of
-            technology and sharpening my skills. I like to be competent about the things I do, the tech I use.
+          <p>
+            I’m a software developer focused on building practical,
+            well-engineered systems. I’m currently pursuing a BSc in Computer
+            Science and Information Technology and spend most of my time
+            building projects, exploring different areas of software, and
+            deepening my understanding of the tools I use. I value correctness,
+            performance, and clarity over trends or visual gimmicks.
           </p>
-          <ul class="space-y-2 text-stone-700 dark:text-stone-400">
-            <li class="flex items-start">
-              <span class="mr-2">🛠️</span> I spend much of my time building projects—some
-              practical, others just for fun.
-            </li>
-            <li class="flex items-center">
-              <span class="mr-2">⚡</span> I create solutions that either solve real
-              problems or are delightfully absurd.
-            </li>
-            <li class="flex items-center">
-              <span class="mr-2">🚫</span> I don't like to (won't) make fancy animating
-              websites.
-            </li>
-            <li class="flex items-center">
-              <span class="mr-2">🐱</span> I try to pet every cat I meet.
-            </li>
-            <li class="flex items-center">
-              <span class="mr-2">🍦</span> I eat way too much Icecream.
-            </li>
-          </ul>
         </div>
 
         <!-- Social Links -->
         <div class="flex flex-wrap gap-3">
-          {SOCIALS.map(social => (
-            <Link
-              href={social.HREF}
-              external
-              aria-label={`${SITE.NAME} on ${social.NAME}`}
-              class="link-subtle text-sm px-3 py-1 rounded-full border border-stone-200 dark:border-stone-700 hover:border-stone-300 dark:hover:border-stone-600"
-            >
-              {social.NAME}
-            </Link>
-          ))}
+          {
+            SOCIALS.map((social) => (
+              <Link
+                href={social.HREF}
+                external
+                aria-label={`${SITE.NAME} on ${social.NAME}`}
+                class="link-subtle text-sm px-3 py-1 rounded-full border border-stone-200 dark:border-stone-700 hover:border-stone-300 dark:hover:border-stone-600"
+              >
+                {social.NAME}
+              </Link>
+            ))
+          }
           <Link
             href={`mailto:${SITE.EMAIL}`}
             aria-label={`Email ${SITE.NAME}`}
@@ -105,11 +92,13 @@ const work = await Promise.all(
         </div>
 
         <ul class="flex flex-col gap-4">
-          {blog.map(post => (
-            <li>
-              <ArrowCard entry={post} />
-            </li>
-          ))}
+          {
+            blog.map((post) => (
+              <li>
+                <ArrowCard entry={post} />
+              </li>
+            ))
+          }
         </ul>
       </section>
 
@@ -119,17 +108,21 @@ const work = await Promise.all(
       <section>
         <div class="flex items-center justify-between mb-8">
           <h2 class="text-2xl font-semibold text-black dark:text-white">
-            Recent Projects
+            Projects
           </h2>
-          <Link href="/projects" class="link-primary text-sm">See all projects →</Link>
+          <Link href="/projects" class="link-primary text-sm"
+            >See all projects →</Link
+          >
         </div>
 
         <ul class="flex flex-col gap-4">
-          {projects.map(project => (
-            <li>
-              <ArrowCard entry={project} />
-            </li>
-          ))}
+          {
+            projects.map((project) => (
+              <li>
+                <ArrowCard entry={project} />
+              </li>
+            ))
+          }
         </ul>
       </section>
 
@@ -144,20 +137,23 @@ const work = await Promise.all(
           <p
             class="text-stone-600 dark:text-stone-400 mb-6 max-w-lg mx-auto leading-relaxed"
           >
-            If you want to collaborate with me in cool projects, reach out on social media or send me an email.
+            If you want to collaborate with me in cool projects, reach out on
+            social media or send me an email.
           </p>
 
           <div class="flex flex-wrap justify-center gap-3">
-            {SOCIALS.map(social => (
-              <Link
-                href={social.HREF}
-                external
-                aria-label={`${SITE.NAME} on ${social.NAME}`}
-                class="link-primary text-sm px-4 py-2 rounded-full border border-stone-300 dark:border-stone-600 hover:border-stone-400 dark:hover:border-stone-500 hover:bg-stone-50 dark:hover:bg-stone-800/50"
-              >
-                {social.NAME}
-              </Link>
-            ))}
+            {
+              SOCIALS.map((social) => (
+                <Link
+                  href={social.HREF}
+                  external
+                  aria-label={`${SITE.NAME} on ${social.NAME}`}
+                  class="link-primary text-sm px-4 py-2 rounded-full border border-stone-300 dark:border-stone-600 hover:border-stone-400 dark:hover:border-stone-500 hover:bg-stone-50 dark:hover:bg-stone-800/50"
+                >
+                  {social.NAME}
+                </Link>
+              ))
+            }
             <Link
               href={`mailto:${SITE.EMAIL}`}
               aria-label={`Email ${SITE.NAME}`}

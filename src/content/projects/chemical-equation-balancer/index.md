@@ -3,8 +3,9 @@ title: "Chemical Equation Balancer - In your terminal"
 description: "Write chemical equations in the standard format and get balanced form within your terminal"
 date: "Sept 13 2024"
 repoURL: "https://github.com/ABA-aadarsh/cpp-chemical-equation-balancer"
-stack: 
+stack:
    - "C"
+featuredNumber: 6
 ---
 ![Screenshot 2024-09-17 055339](https://github.com/user-attachments/assets/c1b317c4-8500-40e2-95c3-a5d43b102831)
 
@@ -20,39 +21,39 @@ First of all the basic overview of this project:
 
 You input equation in your standard form and get the balanced equation as output. It also supports water of crystallization, electrons and ions in the equation.
 
-- **Standard Chemical Equations:**  
-  
-  The program balances typical chemical reactions of the form `[Reactants] -> [Products]`.  
-  Example:  
+- **Standard Chemical Equations:**
+
+  The program balances typical chemical reactions of the form `[Reactants] -> [Products]`.
+  Example:
   ```
-  Input: H2 + O2 -> H2O  
+  Input: H2 + O2 -> H2O
   Output: (2) H2 + (1) O2 -> (2) H2O
   ```
 
-- **Water of Crystallization:**  
-  
-  The program can handle chemical equations involving water of crystallization, represented as `.H2O` in the reactants or products.  
-  Example:  
+- **Water of Crystallization:**
+
+  The program can handle chemical equations involving water of crystallization, represented as `.H2O` in the reactants or products.
+  Example:
   ```
-  Input: CuSO4.5H2O -> CuSO4 + H2O  
+  Input: CuSO4.5H2O -> CuSO4 + H2O
   Output: (1) CuSO4.5H2O -> (1) CuSO4 + (5) H2O
   ```
 
-- **Ionic Equations:**  
-  
-  The program supports balancing equations that involve ions, where ions are denoted inside `{ }`.  
-  Example:  
+- **Ionic Equations:**
+
+  The program supports balancing equations that involve ions, where ions are denoted inside `{ }`.
+  Example:
   ```
-  Input: Fe{+3} + I{-1} -> Fe{+2} + I2  
+  Input: Fe{+3} + I{-1} -> Fe{+2} + I2
   Output: (2) Fe{+3} + (2) I{-1} -> (2) Fe{+2} + (1) I2
   ```
 
-- **Electron (e⁻) in equation**  
-  
-  Equations involving electrons can also be balanced.  
-  Example:  
+- **Electron (e⁻) in equation**
+
+  Equations involving electrons can also be balanced.
+  Example:
   ```
-  Input: O2 + H{+1} + e -> H2O  
+  Input: O2 + H{+1} + e -> H2O
   Output: (1) O2 + (4) H{+1} + (4) e -> (2) H2O
   ```
 And this is a example of how it can solve typical problems:
@@ -60,7 +61,7 @@ And this is a example of how it can solve typical problems:
 
 ## Understanding the Program
 Now lets talk about the workflow of this application. There is just two part of the program:
-1. Take string input from user and parse it into coefficient matrix   
+1. Take string input from user and parse it into coefficient matrix
 Say user gives: `H2 + O2 -> H2O` as input. Then the first step is to convert each term into column matrix.
 ![Screenshot-2025-03-08-214241.png](https://i.postimg.cc/t4D8JGr0/Screenshot-2025-03-08-214241.png)
 

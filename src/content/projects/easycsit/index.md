@@ -3,12 +3,13 @@ title: "easyCSIT"
 description: "A growing learning platform for B.Sc. CSIT students with structured notes, videos, AI-generated Q&As, and past exam collections."
 date: "Jun 1 2025"
 demoURL: "https://www.easycsit.com"
-stack: 
+stack:
    - "Nextjs"
    - "MongoDB"
 highlights:
    - 16K+ views/month
    - 100+ users/day
+featuredNumber: 1
 ---
 
 ![Hero Image](/assets/projects/easycsit/easycsit-hero.png)
@@ -37,26 +38,26 @@ The result was a significantly more stable, flexible, and user-friendly platform
 
 ### Key Features
 
-1. **Chapter-Wise Video Learning**  
+1. **Chapter-Wise Video Learning**
    Structured subject → chapter → video navigation with embedded YouTube playback.
 
-2. **Multi-Level Study Guides**  
+2. **Multi-Level Study Guides**
    Content organized at the subject, chapter, and individual video level for quick revision and deeper study.
 
-3. **Interactive Video Panel (USP)**  
+3. **Interactive Video Panel (USP)**
    A custom-built video interface that allows:
    - Maximizing/minimizing/fullscreen toggle
    - Side-by-side note viewing while watching
    - Persistent panel across same-subject routes
    - Seamless transitions without interrupting the video
 
-4. **Chapter-Wise Notes**  
+4. **Chapter-Wise Notes**
    Clean, readable notes with support for future enhancements like downloadable PDFs.
 
-5. **AI-Assisted Q&A Generation**  
+5. **AI-Assisted Q&A Generation**
    Automatically generated important questions and their answers for each chapter.
 
-6. **Past Year Question Papers**  
+6. **Past Year Question Papers**
    Archived and organized by semester and subject for offline-style exam prep.
 
 ---
