@@ -7,8 +7,8 @@ stack:
    - "Nextjs"
    - "MongoDB"
 highlights:
-   - 16K+ views/month
-   - 100+ users/day
+   - 40K+ views/month
+   - 200+ users/day
 featuredNumber: 1
 ---
 
